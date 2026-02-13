@@ -12,7 +12,7 @@ model_names = ['Logistic_Regression', 'Decision_Tree', 'kNN', 'Naive_Bayes', 'Ra
 for name in model_names:
     models[name] = joblib.load(f'model/{name}.pkl')
 
-st.title("ML Classification Models Demo")
+st.title("ML Classification Models")
 
 # Upload CSV
 uploaded_file = st.file_uploader("Upload your test CSV file", type="csv")
