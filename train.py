@@ -11,7 +11,7 @@ from xgboost import XGBClassifier
 import joblib
 import os
 
-# Load dataset from CSV
+# Load wine dataset from CSV
 df = pd.read_csv('dataset.csv')
 X = df.iloc[:, :-1].values
 y = df.iloc[:, -1].values
