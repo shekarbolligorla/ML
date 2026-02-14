@@ -14,6 +14,31 @@ for name in model_names:
 
 st.title("ML Classification Models")
 
+# Sidebar for downloads and info
+st.sidebar.header("Download Test Data")
+test_data_df = pd.read_csv('test_data.csv')
+csv_buffer = test_data_df.to_csv(index=False)
+st.sidebar.download_button(
+    label="Download test_data.csv",
+    data=csv_buffer,
+    file_name="test_data.csv",
+    mime="text/csv",
+    help="Download sample test data to evaluate models"
+)
+
+st.sidebar.markdown("---")
+st.sidebar.header("ℹ️ About")
+st.sidebar.info("""
+**Wine Quality Classification Models**
+
+Dataset: UCI Wine Quality (Portuguese red wines)
+- 1,599 instances
+- 11 physicochemical features
+- Binary classification (Good ≥6 vs Poor <6)
+
+Models: 6 ML algorithms trained and optimized
+""")
+
 # Upload CSV
 uploaded_file = st.file_uploader("Upload your test CSV file", type="csv")
 if uploaded_file is not None:
