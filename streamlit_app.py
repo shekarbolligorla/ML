@@ -86,7 +86,15 @@ if uploaded_file is not None:
             st.write(f"MCC: {mcc:.4f}")
             
             st.subheader("Classification Report")
-            st.text(classification_report(y_true, y_pred))
+            # Parse classification report into a structured format
+            report = classification_report(y_true, y_pred, output_dict=True)
+            report_df = pd.DataFrame(report).transpose()
+            report_df = report_df.round(4)
+            st.dataframe(report_df, use_container_width=True)
+            
+            # Display text version as well
+            with st.expander("View Raw Report"):
+                st.text(classification_report(y_true, y_pred))
             
             st.subheader("Confusion Matrix")
             cm = confusion_matrix(y_true, y_pred)
